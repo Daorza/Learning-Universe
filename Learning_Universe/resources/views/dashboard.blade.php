@@ -4,7 +4,7 @@
 
 <title>dashboard</title>
         <!-- section 1 -->
-        <div class="flex p-16 pt-36">
+        <div class="flex p-16 pt-36 bg-opacity-25 backdrop-filter backdrop-blur-sm rounded-lg bg-white">
             <!-- 1.1 -->
             <div class="flex-auto">
                 <!-- heading -->
@@ -21,7 +21,7 @@
                 <!-- CTA -->
                 <button
                     class="px-12 capitalize tracking-wide py-2 mx-auto bg-gray-900 hover:font-semibold text-white my-8 rounded-2xl hover:text-black hover:bg-gray-300 shadow hover:shadow-md">
-                    <a href="">
+                    <a href="{{ url('account') }}">
                         Get Started
                     </a>
                 </button>
@@ -39,7 +39,7 @@
         <!-- section 2 -->
         <div class="flex p-16">
             <!-- 2.1 -->
-            <div class="flex-auto mt-20">
+            <div class="flex-auto mt-20 bg-opacity-25 backdrop-filter backdrop-blur-sm p-8 rounded-lg bg-white">
                 <!-- heading -->
                 <h4 class="text-md font-semibold text-red-950 mb-3">Get to know Us!</h4>
                 <h1 class="text-4xl font-semibold">Grow your <span class=" text-red-600">Skills . . .</span><br>
@@ -111,7 +111,7 @@
             <!-- 3.1 -->
             <div class="flex-wrap w-full">
                 <!-- heading -->
-                <h4 class="uppercase tracking-wider text-sm font-semibold text-red-500 mb-3">Highlight Courses</h4>
+                <h4 class="uppercase tracking-wider text-sm font-semibold bg-red-50 p-2 rounded-md w-fit text-red-500 mb-3">Highlight Courses</h4>
                 <h1 class="capitalize text-4xl font-semibold">Try our best courses for you to get started</h1>
                 <br>
 
@@ -119,14 +119,15 @@
                 <div class="bg-gray-100 shadow-md rounded-lg">
                     <div class="container mx-auto py-12 px-4">
                         <div class="flex overflow-x-scroll py-2">
-                            @foreach($onlineClasses as $onlineClass)
+                        @foreach($onlineClasses as $onlineClass)
+                        <a href="{{ route('class.show', ['id' => $onlineClass->id]) }}" class="hover:-translate-y-4 hover:saturate-150">
                                 <div class="flex-none w-96 mr-4 overflow-hidden bg-white rounded shadow">
-                                    <img src="{{ asset('storage/'. $onlineClass->class_picture) }}" alt="{{ $onlineClass->class_title }}" class="w-full h-48 object-cover">
+                                    <img src="{{ asset('uploads/onlineClasses/'.$onlineClass->class_picture) }}" alt="{{ $onlineClass->class_title }}" class="w-full h-48 object-cover">
                                     <div class="p-4">
                                         <h3 class="text-lg font-bold mb-2">{{ $onlineClass->class_title }}</h3>
                                         <p class="text-gray-600 text-sm mb-4">{{ $onlineClass->class_description }}</p>
                                         <div class="flex justify-between items-center mb-2">
-                                            <div class="text-gray-600">Price: {{ $onlineClass->class_price }}</div>
+                                            <div class="text-gray-600">Price: {{ number_format($onlineClass->class_price, 0, ',', '.') }}</div>
                                             <div class="text-gray-600">Lessons: {{ $onlineClass->class_lessons }}</div>
                                         </div>
                                         <div class="flex justify-between items-center mb-2">
@@ -135,13 +136,14 @@
                                         </div>
                                     </div>
                                 </div>
-                            @endforeach
+                            </a>
+                        @endforeach
                         </div>
                     </div>
                 </div>
                 <br>
                 <div class="flex justify-center">
-                    <button type="button" class="px-8 py-2 rounded-full mx-auto shadow-md border-2 font-medium capitalize border-red-700 hover:text-white hover:bg-red-700"><a href="">See All courses</a></button>
+                    <button type="button" class="px-8 py-2 rounded-full mx-auto shadow-md border-2 font-medium capitalize border-red-700 bg-red-50 hover:text-white hover:bg-red-700"><a href="{{ url('all-class') }}">See All courses</a></button>
                 </div>
             </div>
         </div>
@@ -227,12 +229,12 @@
                 <h2
                     class="capitalize text-4xl font-semibold text-gray-950">
                     Skills certificate from <br> <span class="font-semibold text-red-50 pt-2">Learning Universe</span>
-                </h2>
+        </h2>
                 <br>
                 <!-- CTA -->
                 <button
                     class="px-8 capitalize tracking-wide py-4 mx-auto bg-gray-900 hover:font-semibold text-white my-8 rounded-2xl hover:text-black hover:bg-transparent hover:border-2 hover:border-gray-900 hover:bg-gray-100  shadow hover:shadow-lg">
-                    <a href="">
+                    <a href="{{ route('myclass') }}">
                         Start The Journey
                     </a>
                 </button>
@@ -251,93 +253,69 @@
             <!-- 6.1 -->
             <div class="flex-wrap p-16">
                 <!-- heading -->
-                <h5 class="uppercase tracking-wider text-xs font-semibold text-red-950 mb-3">Our testimonials</h5>
-                <h2 class="capitalize text-4xl text-gray-950 font-extrabold">What they say about <br> the courses from
-                    Learning Universe</h2>
-                <br>
-                <h5>The best courses in the world and most popular in the world too</h5>
-                <br>
-                <div>
-                    <button class="rounded-full w-3 h-3 bg-black text-transparent">1</button>
-                    <button class="rounded-full w-3 h-3 bg-black text-transparent">2</button>
-                    <button class="rounded-full w-3 h-3 bg-black text-transparent">3</button>
-                </div>
-            </div>
-            <!-- 6.2 -->
-            <div class="flex-wrap p-16 w-full">
-                <!-- carousel -->
-
-            </div>
-        </div>
-
-
-        <!-- section 7 -->
-        <div class="flex bg-red-600 w-full text-white">
-            <!-- 7.1 -->
-            <div class="flex-wrap flex-1 p-16 ">
-                <!-- Footer Logo -->
-                <div>
-                    <div class="pb-8 text-3xl font-semibold text-white font-sans">
-                        Learning Universe
+                <div class="grid grid-cols-2  gap-12">
+                    <div>
+                        <h5 class="uppercase tracking-wider text-xs font-semibold text-red-950 mb-3">Our testimonials</h5>
+                        <h2 class="capitalize text-4xl text-gray-950 font-extrabold">What they say about <br> the courses from
+                            Learning Universe</h2>
+                        <br>
+                        <h5>The best courses in the world and most popular in the world too</h5>
+                        <br>
                     </div>
-                    <div class="font-medium">Get a lot of best courses <br> from Learning Universe</div>
-                    <div class="mt-8 gap-4">
-                        <button class="rounded-full w-10 h-10 bg-black text-transparent">1</button>
-                        <button class="rounded-full w-10 h-10 bg-black text-transparent">2</button>
-                        <button class="rounded-full w-10 h-10 bg-black text-transparent">3</button>
-                        <button class="rounded-full w-10 h-10 bg-black text-transparent">4</button>
-                    </div>
-                </div>
-            </div>
-            <!-- 7.2 -->
-            <div class="flex-wrap flex-1 p-16 ">
-                <!-- footer links -->
-                <div>
-                    <div class="grid  place-content-center">
-                        <div class="font-semibold underline underline-offset-4">Links</div><br>
-                        <div class="grid grid-rows-3 gap-3">
-                            <div><a href="">Home</a></div>
-                            <div><a href="">Class</a></div>
-                            <div><a href="">My Class</a></div>
+                    <div class="grid grid-cols-3 gap-2 bg-opacity-5 backdrop-filter backdrop-blur-sm rounded-lg">
+                        <div class="shadow">
+                            <div class="flex justify-center py-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z" />
+                                </svg>
+                            </div>
+                            <span>
+                                <hr class="mx-auto h-px w-4/5 bg-gray-700">
+                            </span>
+                            <div class="text-sm font-light p-4 text-justify">
+                            "Saya sangat puas dengan pengalaman menggunakan aplikasi belajar online ini. Fitur-fitur yang disediakan sangat membantu dalam proses pembelajaran. Aplikasi ini memiliki beragam materi pelajaran dan video pembelajaran yang informatif. Sangat membantu saya dalam mengembangkan minat dan bakat saya."
+                            </div>
+                            <div class="text-sm font-medium flex justify-center py-3">
+                                - Nurmaharani Mulya
+                            </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-            <!-- 7.2 -->
-            <div class="flex-wrap flex-1 p-16 ">
-                <!-- footer contact -->
-                <div>
-                    <div class="grid grid-rows-3 grid-cols-1 gap-4">
-                        <div class="font-semibold underline underline-offset-4">Contact</div>
-                        <div class="flex">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
-                            </svg>
-                          <a href="" class="ml-4">+1 59800</a>
+                        <div class="shadow">
+                            <div class="flex justify-center py-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z" />
+                                </svg>
+                            </div>
+                            <span>
+                                <hr class="mx-auto h-px w-4/5 bg-gray-700">
+                            </span>
+                            <div class="text-sm font-light p-4 text-justify">
+                            "Aplikasi ini sangat memberikan pelacakan kemajuan belajar saya, sehingga saya bisa melihat perkembangan saya dari waktu ke waktu. Ini adalah alat yang hebat untuk pembelajaran online, dan saya sangat merekomendasikannya kepada siapa pun yang ingin meningkatkan pengetahuan mereka."
+                            </div>
+                            <div class="text-sm font-medium flex justify-center py-3">
+                                - Zaskia Cahyaningtyas
+                            </div>
                         </div>
-                        <div class="flex">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                <path stroke-linecap="round" d="M16.5 12a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0zm0 0c0 1.657 1.007 3 2.25 3S21 13.657 21 12a9 9 0 10-2.636 6.364M16.5 12V8.25" />
-                            </svg>
-                          <a href="" class="ml-4">cslearninguniverse@gmail.com</a>
+                        <div class="shadow">
+                            <div class="flex justify-center py-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z" />
+                                </svg>
+                            </div>
+                            <span>
+                                <hr class="mx-auto h-px w-4/5 bg-gray-700">
+                            </span>
+                            <div class="text-sm font-light p-4 text-justify">
+                            "Saya benar-benar terkesan dengan aplikasi ini. Salah satu hal yang menonjol adalah adanya fitur untuk mendapatkan sertifikat. Ini memberikan nilai tambah yang besar bagi saya karena memperoleh sertifikat resmi setelah menyelesaikan kursus-kursus. Saya merasa semua itu sebanding dengan kualitas konten yang disediakan."
+                            </div>
+                            <div class="text-sm font-medium flex justify-center">
+                                - Dela Sagita
+                            </div>
                         </div>
-                        <div class="flex">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
-                            </svg>
-                          <a href="" class="ml-4">Kabupaten Bogor, Jawa Barat</a>
-                        </div>
+
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 
 
-        <!-- section 8 -->
-        <div class="flex bg-red-600 text-white">
-            <div class="flex-auto">
-                <hr class="h-px w-3/4 my-8 bg-gray-600 mx-auto">
-                <div class="flex justify-center py-8 text-lg font-medium tracking-wide">@ Copyright 2023   <a href="" class="hover:underline hover:decoration-dotted px-1"> learninguniverse.com</a></div>
-            </div>
-        </div>

@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\Session;
 
 use App\Models\OnlineClass;
 use App\Models\Category;
@@ -14,13 +13,26 @@ class OnlineClassController extends Controller
     public function index()
     {
         $onlineClasses = OnlineClass::take(4)->get();
-        return view('dashboard', compact('onlineClasses'));
+        return view('dashboard', ['onlineClasses' => $onlineClasses], compact('onlineClasses'));
     }
 
     public function table()
     {
         $onlineClasses = OnlineClass::all();
         return view('admin_kelas.index', compact('onlineClasses'));
+    }
+
+    public function global()
+    {
+        $onlineClasses = OnlineClass::all();
+        return view('class.index', compact('onlineClasses'));
+    }
+
+    public function getByCategory(Category $category)
+    {
+        $classesInCategory = $category->onlineClasses()->get();
+
+        return view('category.show', compact('category', 'classesInCategory'));
     }
 
     public function create()
@@ -66,16 +78,26 @@ class OnlineClassController extends Controller
         return redirect()->route('class')->with('status', 'Class Image Added Successfully');
     }
 
-    public function show($id)
+    public function show($id, $material_title = null, $material_description = null)
     {
-        //
+        $class = OnlineClass::find($id);
+        if (!$class) {
+            return redirect()->route('class')->with('error', 'Class not found.');
+        }
+
+        return view('class.show', compact('class'), [
+            'id'=> $id,
+            'material_title'=> $material_title,
+            'material_description'=> $material_description
+        ]);
     }
 
     public function edit(string $id)
     {
         $categories = Category::all();
         $onlineClasses = OnlineClass::find($id);
-         return view('admin_kelas.edit', compact('onlineClasses'));
+
+        return view('admin_kelas.edit', compact('onlineClasses', 'categories'));
     }
 
     public function update(Request $request, string $id)

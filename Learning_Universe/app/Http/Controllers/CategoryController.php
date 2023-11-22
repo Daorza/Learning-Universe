@@ -47,9 +47,11 @@ class CategoryController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Category $category)
     {
-        //
+        $classesInCategory = $category->onlineClasses ?? collect([]);
+        $firstOnlineClass = $classesInCategory->first();
+        return view('category.show', compact('category', 'classesInCategory'));
     }
 
     /**

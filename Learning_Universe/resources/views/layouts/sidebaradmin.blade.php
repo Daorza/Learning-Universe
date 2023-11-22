@@ -18,8 +18,6 @@
                         <li><a href="{{ url('/student') }}" class="hover:font-medium cursor-pointer flex justify-center items-center rounded-md hover:bg-red-600 hover:text-white hover:shadow-md py-2 px-4">Student Data</a></li>
                         <li><a href="{{ url('/class') }}" class="hover:font-medium cursor-pointer flex justify-center items-center rounded-md hover:bg-red-600 hover:text-white hover:shadow-md py-2 px-4">Class Data</a></li>
                         <li><a href="{{ url('/category') }}" class="hover:font-medium cursor-pointer flex justify-center items-center rounded-md hover:bg-red-600 hover:text-white hover:shadow-md py-2 px-4">Category</a></li>
-                        <li><a href="{{ url('/') }}" class="hover:font-medium cursor-pointer flex justify-center items-center rounded-md hover:bg-red-600 hover:text-white hover:shadow-md py-2 px-4">Lessons</a></li>
-                        <li><a href="{{ url('/') }}" class="hover:font-medium cursor-pointer flex justify-center items-center rounded-md hover:bg-red-600 hover:text-white hover:shadow-md py-2 px-4">Lessons Detail</a></li>
                         <br>
                         <hr class="h-px w-3/4 my-8 bg-gray-300 mx-auto">
                         <br>
@@ -33,17 +31,18 @@
 
             </div>
         </nav>
-        <!-- content here! -->
-        @yield('content_admin')
-        <!-- end content -->
+
     </div>
+     <!-- content here! -->
+     @yield('content_admin')
+        <!-- end content -->
     <!-- Logout Modal -->
     <div id="logoutModal" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden">
         <div class="bg-white p-6 rounded-lg shadow-md">
-            <p class="mb-4">Apakah Anda yakin ingin keluar dari akun ini?</p>
+            <p class="mb-4">Are you sure want to logout from this account?</p>
             <div class="flex justify-center">
                 <button id="cancelLogout"
-                class="mr-2 px-4 py-2 bg-gray-300 text-gray-700 rounded hover:bg-gray-500 hover:text-gray-100">Batal</button>
+                class="mr-2 px-4 py-2 bg-gray-300 text-gray-700 rounded hover:bg-gray-500 hover:text-gray-100">Cancel</button>
 
                 <form id="logout-form" action="" method="POST" style="display: none;">
                 @csrf
@@ -51,7 +50,7 @@
                 <a href="{{ url('/logout') }}" onclick="event.preventDefault();
                     document.getElementById('logout-form').submit();">
                 <button id="confirmLogout"
-                class="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-700 hover:text-gray-100">Keluar</button></a>
+                class="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-700 hover:text-gray-100">Logout</button></a>
             </div>
         </div>
     </div>

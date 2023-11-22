@@ -2,7 +2,7 @@
 
 @section('content_admin')
 
-<title>admin-dashboard</title>
+<title>Admin Dashboard</title>
     <div class="ml-72 p-12 flex-1">
         <div>
             <div class="text-2xl font-bold capitalize">Hello, Minerva</div>
@@ -49,3 +49,4 @@
             </div>
         </div>
     </div>
+    @endsection

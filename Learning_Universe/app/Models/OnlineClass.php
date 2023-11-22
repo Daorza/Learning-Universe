@@ -23,4 +23,9 @@ class OnlineClass extends Model
     {
         return $this->belongsTo(Category::class, 'category_id');
     }
+
+    public function materials()
+    {
+        return $this->hasMany(Material::class, 'online_class_id', 'id', 'material_id');
+    }
 }

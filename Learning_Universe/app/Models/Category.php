@@ -12,7 +12,7 @@ class Category extends Model
     protected $table = 'categories';
     public $timestamps = false;
 
-    public function OnlineClass()
+    public function OnlineClasses()
     {
         return $this->hasMany(OnlineClass::class);
     }

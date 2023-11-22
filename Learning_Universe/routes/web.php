@@ -1,11 +1,15 @@
 <?php
 
+namespace App\Http\Controllers;
+
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-
-use App\Http\Controllers\OnlineClassController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\OnlineClassController;
+use App\Http\Controllers\MaterialController;
 
-use App\Http\Controllers\studentController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -17,21 +21,45 @@ use App\Http\Controllers\studentController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+/*-------------- Admin Route ----------------*/
 
-Route::get('/', function () {
-    return view('welcome');
+
+Route::prefix('admin')->group(function(){
+
+Route::get('/login',[AdminController::class, 'Index']) ->name('login_form');
+
+Route::post('/login/owner',[AdminController::class, 'Login']) ->name('admin.login');
+
+Route::get('/dashboard',[AdminController::class, 'Dashboard']) ->name('admin.dashboard')->middleware('admin');
+
+Route::get('/logout',[AdminController::class, 'AdminLogout']) ->name('admin.logout')->middleware('admin');
+
+Route::get('/register',[AdminController::class, 'AdminRegister']) ->name('admin.register');
+
+Route::post('/register/create',[AdminController::class, 'AdminRegisterCreate']) ->name('admin.register.create');
+
 });
 
-Route::get('/logout', function () {
-    return view('welcome');
-});
 
-Route::get('/dashboard', [OnlineClassController::class, 'index']);
-// Route::get('/online-class-carousel', [OnlineClassController::class, 'index']);
+/*-------------- End Admin Route ----------------*/
+
+Route::get('/', [OnlineClassController::class, 'index'])->name('online-class.index');
 
 Route::get('/admin-dashboard', function () {
     return view('dashboardadmin');
 });
+
+Route::get('account', function () {
+    return view('account');
+})->name('acc');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+
 
 Route::get('class', [OnlineClassController::class,'table'])->name('class');
 Route::get('add-class', [OnlineClassController::class,'create']);
@@ -40,11 +68,23 @@ Route::get('edit-class/{id}', [OnlineClassController::class,'edit']);
 Route::put('update-class/{id}', [OnlineClassController::class,'update']);
 Route::delete('delete-class/{id}', [OnlineClassController::class,'destroy']);
 
-Route::get('students', [StudentController::class, 'index']);
-Route::get('add-student', [StudentController::class, 'create']);
-Route::post('add-student', [StudentController::class, 'store']);
-Route::get('edit-student/{id}', [StudentController::class, 'edit']);
-Route::put('update-student/{id}', [StudentController::class, 'update']);
-Route::delete('delete-student/{id}', [StudentController::class, 'destroy']);
+// class->material
+Route::get('/materials/{class_id}', [MaterialController::class, 'index'])->name('materials.index');
+Route::get('/materials/create/{class_id}', [MaterialController::class, 'create'])->name('materials.create');
+Route::post('/materials', [MaterialController::class, 'store'])->name('materials.store');
+
+Route::get('/materials/{id}/edit', [MaterialController::class, 'edit'])->name('materials.edit');
+Route::put('/materials/{id}', [MaterialController::class, 'update'])->name('materials.update');
+Route::delete('/materials/{id}', [MaterialController::class, 'destroy'])->name('materials.destroy');
+
+Route::get('/all-class', [OnlineClassController::class, 'global'])->name('all-class');
+Route::get('/class/{id}', [OnlineClassController::class, 'show'])->name('class.show');
 
 Route::resource('category', CategoryController::class)->except('show');
+Route::get('/categories/{category}', [CategoryController::class, 'show'])->name('category.show');
+
+Route::get('myclass', function () {
+    return view('myclass.index');
+})->name('myclass');
+
+require __DIR__.'/auth.php';
