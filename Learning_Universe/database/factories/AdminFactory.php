@@ -11,10 +11,10 @@ class AdminFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => 'Admin',
+            'name' => 'Admin Minerva',
             'email' => $this->faker->unique()->randomElement(['reza@gmail.com', 'ojan@gmail.com']),
             'email_verified_at' => now(),
-            'password' => Hash::make('rezaojanskiel106'), // Password default untuk semua akun admin
+            'password' => Hash::make('01101100'), // Password default untuk semua akun admin
         ];
     }
 }

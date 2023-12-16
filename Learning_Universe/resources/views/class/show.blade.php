@@ -40,7 +40,7 @@
             <!-- right sectionl -->
             <div class="ml-8">
                 <div class="text-xl font-bold flex justify-end">
-                    {{ number_format($class->class_price) }}
+                    IDR {{ number_format($class->class_price) }}
                 </div>
                 <br>
                 <div class="text-white bg-gray-500 rounded-md px-8 py-2">

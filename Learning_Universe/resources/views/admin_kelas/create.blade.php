@@ -62,13 +62,7 @@
                                 </select>
                             </div>
                             <br>
-                            <div class="flex justify-between">
-                                <a href="{{ url('class') }}">
-                                    <button type="submit"
-                                        class="px-8 py-2 mt-2 font-medium tracking-wide text-white uppercase rounded-md shadow-md bg-gray-700 focus:outline-none hover:bg-gray-900 hover:text-lg">
-                                        back
-                                    </button>
-                                </a>
+                            <div class="flex justify-end">
                                 <button type="submit"
                                     class="px-8 py-2 mt-2 font-medium tracking-wide text-white uppercase rounded-md shadow-md bg-gray-700 focus:outline-none hover:bg-gray-900 hover:text-lg">
                                     Add data

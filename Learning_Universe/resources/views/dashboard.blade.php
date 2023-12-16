@@ -127,12 +127,12 @@
                                         <h3 class="text-lg font-bold mb-2">{{ $onlineClass->class_title }}</h3>
                                         <p class="text-gray-600 text-sm mb-4">{{ $onlineClass->class_description }}</p>
                                         <div class="flex justify-between items-center mb-2">
-                                            <div class="text-gray-600">Price: {{ number_format($onlineClass->class_price, 0, ',', '.') }}</div>
+                                            <div class="text-gray-600">Price: IDR {{ number_format($onlineClass->class_price, 0, ',', '.') }}</div>
                                             <div class="text-gray-600">Lessons: {{ $onlineClass->class_lessons }}</div>
                                         </div>
                                         <div class="flex justify-between items-center mb-2">
                                             <div class="text-gray-600">Members: {{ $onlineClass->class_members }}</div>
-                                            <div class="text-gray-600">Ratings: {{ $onlineClass->class_ratings }}</div>
+                                            <div class="text-gray-600">Ratings: {{ number_format($onlineClass->$averageRating, 1) }}</div>
                                         </div>
                                     </div>
                                 </div>
@@ -142,7 +142,7 @@
                     </div>
                 </div>
                 <br>
-                <div class="flex justify-center">
+                <div class="flex tracking justify-center">
                     <button type="button" class="px-8 py-2 rounded-full mx-auto shadow-md border-2 font-medium capitalize border-red-700 bg-red-50 hover:text-white hover:bg-red-700"><a href="{{ url('all-class') }}">See All courses</a></button>
                 </div>
             </div>
@@ -234,7 +234,7 @@
                 <!-- CTA -->
                 <button
                     class="px-8 capitalize tracking-wide py-4 mx-auto bg-gray-900 hover:font-semibold text-white my-8 rounded-2xl hover:text-black hover:bg-transparent hover:border-2 hover:border-gray-900 hover:bg-gray-100  shadow hover:shadow-lg">
-                    <a href="{{ route('myclass') }}">
+                    <a href="{{ route('myclass.index') }}">
                         Start The Journey
                     </a>
                 </button>
@@ -273,8 +273,7 @@
                                 <hr class="mx-auto h-px w-4/5 bg-gray-700">
                             </span>
                             <div class="text-sm font-light p-4 text-justify">
-                            "Saya sangat puas dengan pengalaman menggunakan aplikasi belajar online ini. Fitur-fitur yang disediakan sangat membantu dalam proses pembelajaran. Aplikasi ini memiliki beragam materi pelajaran dan video pembelajaran yang informatif. Sangat membantu saya dalam mengembangkan minat dan bakat saya."
-                            </div>
+                            "I am very satisfied with the experience of using this online learning application. The features provided are very helpful in the learning process. This application has a variety of informative learning materials and learning videos. It helps me in developing my interests and talents."                            </div>
                             <div class="text-sm font-medium flex justify-center py-3">
                                 - Nurmaharani Mulya
                             </div>
@@ -289,8 +288,7 @@
                                 <hr class="mx-auto h-px w-4/5 bg-gray-700">
                             </span>
                             <div class="text-sm font-light p-4 text-justify">
-                            "Aplikasi ini sangat memberikan pelacakan kemajuan belajar saya, sehingga saya bisa melihat perkembangan saya dari waktu ke waktu. Ini adalah alat yang hebat untuk pembelajaran online, dan saya sangat merekomendasikannya kepada siapa pun yang ingin meningkatkan pengetahuan mereka."
-                            </div>
+                            "This app provides tracking of my learning progress, so I can see my progress over time. It's a great tool for online learning, and I highly recommend it to anyone looking to improve their knowledge. and it is comparable to the quality of the content provided."                            </div>
                             <div class="text-sm font-medium flex justify-center py-3">
                                 - Zaskia Cahyaningtyas
                             </div>
@@ -305,8 +303,7 @@
                                 <hr class="mx-auto h-px w-4/5 bg-gray-700">
                             </span>
                             <div class="text-sm font-light p-4 text-justify">
-                            "Saya benar-benar terkesan dengan aplikasi ini. Salah satu hal yang menonjol adalah adanya fitur untuk mendapatkan sertifikat. Ini memberikan nilai tambah yang besar bagi saya karena memperoleh sertifikat resmi setelah menyelesaikan kursus-kursus. Saya merasa semua itu sebanding dengan kualitas konten yang disediakan."
-                            </div>
+                            "I am very impressed with this online learning application. One of the things that stands out is the feature to get a certificate. It provides a big added value because I can get an official certificate after completing the courses. The payment feature is also very convenient." </div>
                             <div class="text-sm font-medium flex justify-center">
                                 - Dela Sagita
                             </div>

@@ -26,6 +26,11 @@ class OnlineClass extends Model
 
     public function materials()
     {
-        return $this->hasMany(Material::class, 'online_class_id', 'id', 'material_id');
+        return $this->hasMany(Material::class, 'online_class_id', 'id', 'material_id',);
+    }
+
+    public function ratings()
+    {
+        return $this->hasMany(Rating::class, 'class_id');
     }
 }

@@ -66,6 +66,9 @@
                                     Material Description
                                 </th>
                                 <th scope="col" class="px-6 py-3">
+                                    <span class="sr-only">Details</span>
+                                </th>
+                                <th scope="col" class="px-6 py-3">
                                     <span class="sr-only">Edit</span>
                                 </th>
                                 <th scope="col" class="px-6 py-3">
@@ -78,13 +81,18 @@
                             @foreach ($materials as $material)
                             <tr class="bg-white border-b hover:bg-gray-100">
                                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap capitalize">
-                                    {{ $i }}
+                                    {{ $i++ }}
                                 </th>
                                 <td class="px-6 py-4">
                                     {{ $material->material_title }}
                                 </td>
                                 <td class="px-6 py-4">
                                     {{ $material->material_description }}
+                                </td>
+                                <td class="px-6 py-4 text-right">
+                                <a href="{{ route('detail-material.index', ['class_id' => $onlineClass->id, 'material_id' => $material->id]) }}" class="font-medium text-red-600">
+                                    Manage Details
+                                </a>
                                 </td>
                                 <td class="px-6 py-4 text-right">
                                     <a href="{{ route('materials.edit', ['id' => $material->id]) }}" class="font-medium text-red-600">
@@ -109,7 +117,6 @@
 
                                 </td>
                             </tr>
-                            <?php $i++ ?>
                             @endforeach
                         </tbody>
                     </table>

@@ -68,7 +68,7 @@
                             @foreach ($categories as $c)
                             <tr class="bg-white border-b hover:bg-gray-100">
                                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap capitalize">
-                                    {{ $i }}
+                                    {{ $i++ }}
                                 </th>
                                 <td class="px-6 py-4">
                                     {{ $c->category_name }}
@@ -94,7 +94,6 @@
 
                                 </td>
                             </tr>
-                            <?php $i++ ?>
                             @endforeach
                         </tbody>
                     </table>

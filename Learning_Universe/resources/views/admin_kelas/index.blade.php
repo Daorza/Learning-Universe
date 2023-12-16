@@ -42,6 +42,13 @@
                         {{Session::get('statusd')}}
                     </div>
                     @endif
+                    @if (Session::has('error'))
+                    <div class="p-4 mb-4 text-sm text-blue-800 rounded-lg bg-blue-50"
+                        role="alert">
+                        <span class="font-medium">Alert!</span>
+                        {{Session::get('error')}}
+                    </div>
+                    @endif
                 <div class="relative overflow-x-auto sm:rounded-lg">
                     <table class="w-full text-sm text-left text-gray-500 top-0">
                         <thead class="text-xs text-gray-700 uppercase bg-gray-50">
@@ -80,7 +87,7 @@
                             @foreach ($onlineClasses as $item)
                             <tr class="bg-white border-b hover:bg-gray-100">
                                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap capitalize">
-                                    {{ $i }}
+                                    {{ $i++ }}
                                 </th>
                                 <td class="px-6 py-4">
                                     <img src="{{ asset('uploads/onlineClasses/'.$item->class_picture) }}" alt="image" width="70px" height="70px">
@@ -95,7 +102,7 @@
                                     {{ $item->category->category_name }}
                                 </td>
                                 <td class="px-6 py-4">
-                                    {{ number_format($item->class_price, 0, ',', '.') }}
+                                    IDR {{ number_format($item->class_price, 0, ',', '.') }}
                                 </td>
                                 <td class="px-6 py-4 text-right">
                                     <a href="{{ route('materials.index', ['class_id' => $item->id]) }}" class="font-medium text-red-600" title="Materials">
@@ -126,7 +133,6 @@
                                 </td>
                             </tr>
                             @endforeach
-                            <?php $i++ ?>
                         </tbody>
                     </table>
                     <br>
@@ -135,3 +141,4 @@
             </div>
         <!-- end content -->
         </div>
+

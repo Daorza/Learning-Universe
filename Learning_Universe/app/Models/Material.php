@@ -19,4 +19,9 @@ class Material extends Model
     {
         return $this->belongsTo(OnlineClass::class, 'online_Class_id', 'id');
     }
+
+    public function detailMaterials()
+    {
+        return $this->hasMany(DetailMaterial::class,'material_id', 'id');
+    }
 }

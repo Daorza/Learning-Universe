@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
+use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -13,6 +14,12 @@ use Illuminate\View\View;
 
 class AuthenticatedSessionController extends Controller
 {
+    public function index()
+    {
+        $user = User::all();
+        return view('admin_user.index', compact('user'));
+    }
+
     /**
      * Display the login view.
      */

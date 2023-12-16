@@ -26,13 +26,13 @@
                         @csrf
                         @method('PUT')
                         <div class="space-y-2">
-                            <label for="title" class="font-medium">Category Name</label>
+                            <label for="title" class="font-medium">Material Title</label>
                             <input type="text" name="material_title" id="title" required value="{{ old('material_title', $materials->material_title) }}" required
                                 class="block w-full p-2 mt-2 shadow rounded-md text-gray-900 bg-stone-50 appearance-none focus:outline-gray-800 focus:bg-gray-100 focus:shadow-inner">
                         </div>
                         <br>
                         <div class="space-y-2">
-                            <label for="description" class="font-medium">Category Name</label>
+                            <label for="description" class="font-medium">Material Description</label>
                             <input type="text" name="material_description" id="description" required value="{{ old('material_description', $materials->material_description) }}" required
                                 class="block w-full p-2 mt-2 shadow rounded-md text-gray-900 bg-stone-50 appearance-none focus:outline-gray-800 focus:bg-gray-100 focus:shadow-inner">
                         </div>

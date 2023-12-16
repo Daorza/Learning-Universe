@@ -8,19 +8,17 @@
     <title>Login Admin</title>
 </head>
 <body>
-    <div class="container bg-cover min-h-screen w-full flex justify-center items-center"
-
-
-
-        style="background-image: url('{{ asset('images/tes.jpeg') }}');">
-        <div class="bg-white rounded-xl bg-opacity-50 backdrop-filter backdrop-blur-lg w-1/2 p-5 mx-[26rem]">
+    <div class="min-h-screen w-full flex justify-center items-center"
+        style="background-image: url('{{ asset('asset/pattern2.png') }}');">
+        <div class="bg-white rounded-xl bg-opacity-70 backdrop-filter backdrop-blur-lg p-8 shadow-md">
             <span class="text-gray-950 text-xl font-semibold flex justify-center items-center">
-                LOGIN ADMIN
+                <img src="{{ asset('asset/Logo_Learning-Universe.png') }}" alt="" width="240px" height="280px">
+                <div class="text-6xl font-bold mr-16">
+                LOGIN <br> ADMIN
+                </div>
             </span>
             <br>
             <div class="grid place-items-center">
-
-
             @if(Session::has('error'))
                 <div class="alert alert-warning alert-dismissible fade show" role="alert">
                 <strong>{{ session::get('error') }}</strong>
@@ -29,29 +27,32 @@
                 @endif
 
 
-                <form method="POST" action="{{ route('admin.login') }}" >
+                <form method="POST" action="{{ route('admin.login') }}" class="w-full px-20">
                 @csrf
-                    <label for="" class="text-gray-900">Email</label>
+                    <label for="" class="text-gray-900 font-medium text-lg">Email</label>
                     <input type="text" name="email"  type="email"
-                        class=" form-input mt-1 block border-2 rounded-md pr-20 focus:ring-2 focus:ring-gray-800 focus:border-0 p-2"
-                        placeholder="email">
+                        class=" form-input mt-1 block border-2 rounded-md focus:ring-2 focus:ring-gray-800 focus:border-0 p-2 w-full"
+                        placeholder="example@gmail.com">
                     <hr class="h-0 border-0 my-2 ">
-                    <label for="" class="text-gray-900">Password</label>
+                    <label for="" class="text-gray-900 font-medium text-lg">Password</label>
                     <input type="password" name="password" id="password"
-                        class="form-input mt-1 block border-2 rounded-md pr-20 focus:ring-2 focus:ring-gray-800 focus:border-0 p-2"
-                        placeholder="****">
+                        class="form-input mt-1 block border-2 rounded-md focus:ring-2 focus:ring-gray-800 focus:border-0 p-2 w-full"
+                        placeholder="********">
                     <br>
 
                     <button type="submit">
-                    <a class="w-full bg-gray-900 hover:bg-gray-950 shadow-md text-white rounded-md px-4 py-2 font-medium">Login</a></button>
+                    <div class="flex justify-center">
+                        <a class="w-full bg-gray-900 hover:bg-gray-950 shadow-md text-white rounded-md px-60 mx-16 py-2 font-medium">Login</a></button>
+                    </div>
                 </form>
 
                 <br>
-                <p class="text-sm">Belum memiliki akun? <a href="{{ route('admin.register') }}"
-                        class="hover:text-blue-600 hover:text-md hover:underline">Register</a></p>
-                <p class="text-sm">atau</p>
-                <p class="text-sm">Kembali ke <a href= "{{ url('/') }}"
-                        class="hover:text-blue-600 hover:text-md hover:underline">Halaman Sebelumnya</a></p>
+                <p class="text-sm flex justify-center mt-2">Kembali ke
+                    <a href= "{{ url('/') }}"
+                        class="hover:text-blue-600 hover:text-md hover:underline">
+                        Halaman Sebelumnya
+                    </a>
+                </p>
             </div>
         </div>
     </div>

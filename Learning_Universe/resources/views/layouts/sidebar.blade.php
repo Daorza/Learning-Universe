@@ -11,12 +11,18 @@
         body {
             background-image: url(' {{ asset('asset/pattern1.jpg') }} ');
         }
+
+        nav{
+            position: fixed;
+            width: 100%;
+            z-index: 2;
+        }
     </style>
 </head>
 
 <body>
     <div>
-        <div class="invisible md:visible w-full fixed top-0">
+        <div class="invisible md:visible w-full fixed top-0 z-50">
             <nav class="flex justify-between py-2 px-8 bg-slate-50 shadow">
                 <!-- Logo -->
                 <div class="flex">
@@ -41,7 +47,7 @@
                         </ul>
                     </div>
 
-                    <div class="hover:font-medium hover:underline"><a href="{{ route('myclass') }}">My Class</a></div>
+                    <div class="hover:font-medium hover:underline"><a href="{{ route('myclass.index') }}">My Class</a></div>
                 </div>
                 <!-- account -->
                 <div class="gap-4 flex justify-around text-sm">
@@ -199,13 +205,13 @@
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
                             </svg>
-                          <a href="" class="ml-4">+1 59800</a>
+                          <a href="" class="ml-4">CS Learning Universe</a>
                         </div>
                         <div class="flex">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                                 <path stroke-linecap="round" d="M16.5 12a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0zm0 0c0 1.657 1.007 3 2.25 3S21 13.657 21 12a9 9 0 10-2.636 6.364M16.5 12V8.25" />
                             </svg>
-                          <a href="" class="ml-4">cslearninguniverse@gmail.com</a>
+                          <a href="https://www.instagram.com/learning_universe.official" class="ml-4">learning_universe.official</a>
                         </div>
                         <div class="flex">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">

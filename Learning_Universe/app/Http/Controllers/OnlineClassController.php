@@ -7,12 +7,14 @@ use Illuminate\Support\Facades\Storage;
 
 use App\Models\OnlineClass;
 use App\Models\Category;
+use App\Models\Rating;
 
 class OnlineClassController extends Controller
 {
     public function index()
     {
         $onlineClasses = OnlineClass::take(4)->get();
+
         return view('dashboard', ['onlineClasses' => $onlineClasses], compact('onlineClasses'));
     }
 
@@ -90,6 +92,14 @@ class OnlineClassController extends Controller
             'material_title'=> $material_title,
             'material_description'=> $material_description
         ]);
+    }
+
+    public function myclass()
+    {
+        $classes = OnlineClass::all();
+        $categories = Category::where('id', $classes->pluck('category_id'))->get();
+
+        return view('myclass.index', compact('classes', 'categories'));
     }
 
     public function edit(string $id)
